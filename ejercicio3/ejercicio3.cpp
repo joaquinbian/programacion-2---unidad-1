@@ -53,6 +53,7 @@ int pedirIdCategoria();
 float pedirImporte();
 
 int obtenerMayorGasto(int gastos[10]);
+void listarGastos(string categorias[10], int gastos[10]);
 
 int main(){
 
@@ -78,7 +79,12 @@ int main(){
         dia = pedirDiaDeGasto();
     }
     
+    //a
     idCategoriaMayorGastos = obtenerMayorGasto(gastoCategorias);
+
+    cout << "Listado de gastos de servicios " << endl << endl;
+    //b
+    listarGastos(categorias, gastoCategorias);
     
     cout << "La categoria en la que mas se gasto fue " << categorias[idCategoriaMayorGastos] << " con $" << gastoCategorias[idCategoriaMayorGastos] << endl << endl;
 
@@ -125,11 +131,23 @@ float pedirImporte(){
 
 int obtenerMayorGasto(int gastos[10]){
     int mayor = 0;
+    int indiceMayor;
     for(int i = 0; i < 10; i++){
+
         if(gastos[i] > mayor){
-            mayor = i;
+            indiceMayor = i;
+            mayor = gastos[i];
         }
     }
 
-    return mayor;
+    return indiceMayor;
+}
+
+
+void listarGastos(string categorias[10], int gastos[10]){
+    for(int i = 0; i < 10; i++){
+        cout << categorias[i] << "--> " << "$" << gastos[i];
+        cout << endl;
+        cout << endl;
+    }
 }
