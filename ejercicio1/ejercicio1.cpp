@@ -13,12 +13,14 @@ Cargar las notas del primer parcial de los 20 estudiantes de un curso. Luego de 
 
 bool preguntarVerNotas(string message);
 int obtenerIndiceAlumno();
+float obtenerPromedio(float vec[], int tamanoVec);
+
 
 int main(){
 
-    float notas[20];
+    float notas[20], promedio;
 
-    int nota, indiceNota;
+    int nota, indiceNota, contadorNotaMayorPromedio;
 
     bool verNota;
 
@@ -46,10 +48,21 @@ int main(){
 
     //pase lo que pase, le mostramos el punto 2
     
+    promedio = obtenerPromedio(notas, 20);
+
+    cout << "El promedio es " << promedio << endl;
+
+    for(int i = 0; i < 20; i++){
+        if(notas[i] > promedio){
+            contadorNotaMayorPromedio++;
+        }
+    }
+
+    cout << contadorNotaMayorPromedio << " alumnos obtuvieron una nota mayor al promedio " << endl;
     
 
     //datos de los alumnos
-    cout << "Hola mundo";
+    cout << "Hola mundo" << endl;;
 
     return 0;
 }
@@ -85,4 +98,16 @@ int obtenerIndiceAlumno(){
         }while(indiceNota < 0 && indiceNota > 20);
 
         return indiceNota;
+}
+
+
+float obtenerPromedio(float vec[], int tamano){
+    int sum = 0;
+
+    for(int i = 0; i < tamano; i++){
+        sum += vec[i];
+    }
+
+    return sum / tamano;
+
 }
