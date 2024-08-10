@@ -54,6 +54,7 @@ float pedirImporte();
 
 int obtenerMayorGasto(int gastos[10]);
 void listarGastos(string categorias[10], int gastos[10]);
+int contarCategoriasSinGastos(int gastos[10]);
 
 int main(){
 
@@ -81,12 +82,15 @@ int main(){
     
     //a
     idCategoriaMayorGastos = obtenerMayorGasto(gastoCategorias);
+    cout << "La categoria en la que mas se gasto fue " << categorias[idCategoriaMayorGastos] << " con $" << gastoCategorias[idCategoriaMayorGastos] << endl << endl;
 
     cout << "Listado de gastos de servicios " << endl << endl;
     //b
     listarGastos(categorias, gastoCategorias);
+
+    //c
+    cout << contarCategoriasSinGastos(gastoCategorias) << " Categorias NO tuvieron movimientos" << endl << endl;
     
-    cout << "La categoria en la que mas se gasto fue " << categorias[idCategoriaMayorGastos] << " con $" << gastoCategorias[idCategoriaMayorGastos] << endl << endl;
 
     return 0;
 }
@@ -150,4 +154,17 @@ void listarGastos(string categorias[10], int gastos[10]){
         cout << endl;
         cout << endl;
     }
+}
+
+int contarCategoriasSinGastos( int gastos[10]){
+   int contador = 0;
+   
+   
+   for(int i = 0; i < 10; i++){
+        if(gastos[i] == 0){
+            contador++;
+        }
+    } 
+
+    return contador;
 }
