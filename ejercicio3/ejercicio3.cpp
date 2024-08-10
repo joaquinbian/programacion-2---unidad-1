@@ -53,13 +53,15 @@ int pedirIdCategoria();
 float pedirImporte();
 
 int obtenerMayorGasto(int gastos[10]);
-void listarGastos(string categorias[10], int gastos[10]);
 int contarCategoriasSinGastos(int gastos[10]);
+void listarGastos(string categorias[10], int gastos[10]);
+void listarGastosPorDia(int gastosPorDia[31]);
 
 int main(){
 
     string categorias[10] = {"Servicios", "Alimentacion", "Limpieza", "Transporte", "Educacion", "Salud", "Ocio", "Impuestos", "Vestimenta", "Inversiones"};
     int gastoCategorias[10];
+    int gastosPorDia[31];
    
     int dia, idCategoria, importe, idCategoriaMayorGastos;
 
@@ -74,8 +76,12 @@ int main(){
 
         //empezamos a calcular
 
+
         //a
         gastoCategorias[idCategoria - 1] += importe;
+        
+        //d
+        gastosPorDia[dia - 1]++;
 
         dia = pedirDiaDeGasto();
     }
@@ -90,7 +96,9 @@ int main(){
 
     //c
     cout << contarCategoriasSinGastos(gastoCategorias) << " Categorias NO tuvieron movimientos" << endl << endl;
-    
+
+    //d
+    listarGastosPorDia(gastosPorDia);   
 
     return 0;
 }
@@ -156,7 +164,7 @@ void listarGastos(string categorias[10], int gastos[10]){
     }
 }
 
-int contarCategoriasSinGastos( int gastos[10]){
+int contarCategoriasSinGastos(int gastos[10]){
    int contador = 0;
    
    
@@ -167,4 +175,13 @@ int contarCategoriasSinGastos( int gastos[10]){
     } 
 
     return contador;
+}
+
+
+void listarGastosPorDia(int gastosPorDia[31]){
+    for(int i = 0; i < 31; i++){
+        if(gastosPorDia[i] > 0){
+            cout << "El dia " << i + 1 <<" del mes se hicieron " << gastosPorDia[i] << " gastos" << endl;
+        }
+    }
 }
