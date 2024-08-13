@@ -185,7 +185,7 @@ void calcularAccesosDeAlumnos(string materias[5], int accesosAlumnos[5]){
 
 void calcularMateriaConMasHorasIngresos(string materias[5], int cantidadHorasIngresos[5]){
 
-    int indiceMasHoras, mayor = -1
+    int indiceMasHoras, mayor = -1;
     
     for(int i = 0; i < 5; i++){
         if(cantidadHorasIngresos[i] > mayor){
