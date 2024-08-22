@@ -39,11 +39,13 @@ int pedirTipoDeVivienda();
 //funciones para las respuestas
 int obtenerTipoMasAdoptado(int *v, int size);
 void mostrarPromedioDeEdadDeAdoptantes(int *contadorTipos, int *sumatoriaTipos, string *animales, int size);
+void mostrarAnimalesEnViviendas(int adopcionPorTipoYVivienda[6][5], string *animales, string *viviendas);
 
 int main(){
 
     int mes, contadorTiposAdoptados[6], sumatoriaEdadAdoptadosPorTipo[6], adopcionesPorTipoYVivienda[6][5], tipoAnimal, edadAdoptante, tipoViviendaAdoptante;
     string animales[6] = {"10 - Perro", "11 - Gato", "12 - Conejo", "13 - Hurón", "14 - Caballo", "15 - Oveja"};
+    string viviendas[5] = {"1 - Casa", "2 - Departamento", "3 - Casa Quinta", "4 - Finca", "5 - Duplex"};
 
     mes = pedirMes();
 
@@ -67,13 +69,17 @@ int main(){
         mes = pedirMes();
     }
     
-
+    
     //mostramos las respuestas
     int resA = obtenerTipoMasAdoptado(contadorTiposAdoptados, 6);
-    cout << "El tipo de animal mas adoptado fue el " << resA << endl;
+    cout << "############## PUNTO A ##############" << endl << endl;
+    cout << "El tipo de animal mas adoptado fue el " << animales[resA] << endl;
 
+    cout << "############## PUNTO B ##############" << endl << endl;
     mostrarPromedioDeEdadDeAdoptantes(contadorTiposAdoptados, sumatoriaEdadAdoptadosPorTipo, animales, 6);
 
+    cout << "############## PUNTO C ##############" << endl << endl;
+    mostrarAnimalesEnViviendas(adopcionesPorTipoYVivienda, animales, viviendas);
 
 
     return 0;
@@ -147,7 +153,7 @@ int obtenerTipoMasAdoptado(int *v, int size){
 
     for(int i = 0; i < size; i++){
         if(v[i] > max){
-            tipo = i + 10;
+            tipo = i;
             max = v[i];
         }
     }
@@ -164,5 +170,13 @@ void mostrarPromedioDeEdadDeAdoptantes(int *contadorTipos, int *sumatoriaTipos, 
             promedio = 0;
         }
         cout << "El promedio de edad del " << animales[i] << " es " << promedio << endl;
+    }
+}
+
+void mostrarAnimalesEnViviendas(int adopcionPorTipoYVivienda[6][5],string *animales, string *viviendas){
+    for(int i = 0; i < 6; i++){
+        for(int j = 0; j < 5; j++){
+            cout << "Animal " << animales[i] << " en " << viviendas[j] << ": " << adopcionPorTipoYVivienda[i][j] << endl;
+        }  
     }
 }
